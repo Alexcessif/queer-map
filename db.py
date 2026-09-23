@@ -1,5 +1,6 @@
 import json
 import sqlite3
+import os
 from http.server import HTTPServer, BaseHTTPRequestHandler
 
 DB_NAME = "queer_map.db"
@@ -28,15 +29,18 @@ class SimpleAPIHandler(BaseHTTPRequestHandler):
         self.send_response(status)
         self.send_header('Content-Type', 'application/json')
         self.send_header('Access-Control-Allow-Origin', '*')
-        self.send_header('Access-Control-Allow-Methods', 'GET, POST, OPTIONS')
+        self.send_header('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, HEAD')
         self.send_header('Access-Control-Allow-Headers', 'Content-Type')
         self.end_headers()
 
     def do_OPTIONS(self):
         self._set_headers(200)
 
+    def do_HEAD(self):
+        self._set_headers(200)
+
     def do_GET(self):
-        if self.path == '/api/places':
+        if self.path == '/' or self.path == '/api/places':
             conn = sqlite3.connect(DB_NAME)
             cursor = conn.cursor()
             cursor.execute("SELECT name, address, amenity, wheelchair, wc, lgbtq, lat, lng FROM places")
@@ -82,10 +86,10 @@ class SimpleAPIHandler(BaseHTTPRequestHandler):
 
 def run():
     init_db()
-    server_address = ('127.0.0.1', 8000)
+    port = int(os.environ.get("PORT", 8000))
+    server_address = ('0.0.0.0', port)
     httpd = HTTPServer(server_address, SimpleAPIHandler)
-    print("Base de données SQLite prête dans queer_map.db")
-    print("Serveur Python tourne sur http://127.0.0.1:8000 (ne pas fermer)")
+    print(f"Serveur Python tourne sur le port {port}")
     httpd.serve_forever()
 
 if __name__ == '__main__':
