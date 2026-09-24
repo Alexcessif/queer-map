@@ -1,6 +1,7 @@
 import { MapContainer, TileLayer, GeoJSON, useMapEvents } from 'react-leaflet';
 import 'leaflet/dist/leaflet.css';
 import { useEffect, useState } from 'react';
+import L from 'leaflet';
 
 function MapClickHandler({ onMapClick }) {
   useMapEvents({
