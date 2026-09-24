@@ -44,7 +44,7 @@ function App() {
     fetch('/export.geojson')
       .then((res) => res.json())
       .then((data) => {
-        fetch('http://127.0.0.1:8000/api/places')
+        fetch('https://safe-mapp.onrender.com/api/places')
           .then((res) => res.json())
           .then((customPlaces) => {
             const customFeatures = customPlaces.map((p) => ({
@@ -160,7 +160,7 @@ function App() {
     };
 
     try {
-      const res = await fetch('http://127.0.0.1:8000/api/places', {
+      const res = await fetch('https://safe-mapp.onrender.com/api/places', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(payload)
