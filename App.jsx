@@ -194,12 +194,12 @@ function App() {
       {/* Recherche lieu existant */}
       {selectedPlace && (
         <div style={{
-          width: '100%', height: '50%', backgroundColor: '#ffffff',
+          width: '50%', height: '50%', backgroundColor: '#ffffff', bottom: 0, left: 0,
           boxShadow: '2px 0 10px rgba(0,0,0,0.1)', zIndex: 1001, padding: '20px',
           boxSizing: 'border-box', overflowY: 'auto', fontFamily: 'sans-serif'
         }}>
           <button onClick={() => setSelectedPlace(null)} style={{ float: 'right', border: 'none', background: 'none', fontSize: '18px', cursor: 'pointer' }}>✕</button>
-          <h2 style={{ marginTop: 0, fontSize: '20px', color: '#1f2937' }}>{selectedPlace.name || 'Lieu sans nom'}</h2>
+          <h2 style={{ marginTop: 0, fontSize: '20px', color: '#ff69b4' }}>{selectedPlace.name || 'Lieu sans nom'}</h2>
           
           {selectedPlace.address && (
             <p style={{ fontSize: '13px', color: '#4b5563', margin: '5px 0' }}>📍 {selectedPlace.address}</p>
@@ -227,7 +227,7 @@ function App() {
           )}
 
           <div style={{ marginBottom: '15px' }}>
-            <h4 style={{ margin: '0 0 5px 0' }}>Repère LGBTQ+</h4>
+            <h4 style={{ margin: '0 0 5px 0' }}>Queer safe place</h4>
             <p style={{ margin: 0, fontSize: '14px', color: '#374151' }}>
               {selectedPlace.lgbtq ? `Safe (${selectedPlace.lgbtq})` : 'Non renseigné'}
             </p>
