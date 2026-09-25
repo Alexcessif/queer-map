@@ -194,7 +194,7 @@ function App() {
   };
 
   return (
-    <div style={{ width: '100vw', height: '100vh', position: 'relative', display: 'flex' }}>
+    <div style={{ width: '100dvw', height: '100dvh', position: 'relative', display: 'flex' }}>
       
       {/* Recherche lieu existant */}
       {selectedPlace && (
