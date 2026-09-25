@@ -199,7 +199,7 @@ function App() {
       {/* Recherche lieu existant */}
       {selectedPlace && (
         <div style={{
-          width: '320px', height: '100%', backgroundColor: '#ffffff',
+          width: '100%', height: '50%', backgroundColor: '#ffffff',
           boxShadow: '2px 0 10px rgba(0,0,0,0.1)', zIndex: 1001, padding: '20px',
           boxSizing: 'border-box', overflowY: 'auto', fontFamily: 'sans-serif'
         }}>
