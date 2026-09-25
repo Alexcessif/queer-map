@@ -88,11 +88,6 @@ function App() {
     const props = feature.properties || {};
     if (!allowedAmenities.includes(props.amenity)) return false;
 
-    if (filterLgbtq) {
-      const isLgbtq = props.lgbtq === 'yes' || props.lgbtq === 'primary' || props.gay === 'welcome' || props.lgbtq === 'user_added';
-      if (!isLgbtq) return false;
-    }
-
     if (filterPmr !== 'all' && props.wheelchair !== filterPmr) {
       return false;
     }
